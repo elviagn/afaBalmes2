@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/afaBalmes2.props" />
+</Project>
