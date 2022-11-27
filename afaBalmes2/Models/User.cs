@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace afaBalmes2.Models;
 
+[Table("User")]
 public class User
 {
     [Key]
@@ -9,25 +11,26 @@ public class User
     [Required]
     public string? Email { get; set; }
     [Required]
+    [Display(Name="Contrasenya")]
+    public string? Password { get; set; }
     [Display(Name = "Data alta")]
-    [DataType(DataType.Date)] 
     public DateTime Date { get; set; }
-    [Required]
     [Display(Name = "Permisos")]
     public UserRole Role { get; set; }
-    [Required]
     [Display(Name = "Estat")]
     public Status Status { get; set; }
 }
 
 public enum UserRole
 {
-    Read = 0,
-    Write = 1
+    NoAccess = 0,
+    Read = 1,
+    Write = 2
 }
 
 public enum Status
 {
     Pending = 0,
-    Active = 1
+    Active = 1,
+    Erased = 2
 }

@@ -27,24 +27,6 @@ namespace afaBalmes2.Controllers
                           Problem("Entity set 'afaBalmes2Context.User'  is null.");
         }
 
-        // GET: User/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.User == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.User
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
-        }
-
         // GET: User/Create
         public IActionResult Create()
         {
@@ -56,10 +38,12 @@ namespace afaBalmes2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Email,Date,Role,Status")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Email,Password,Date,Role,Status")] User user)
         {
             if (ModelState.IsValid)
             {
+                user.Password = Encrypt.GetMD5(user.Password);
+                user.Date = DateTime.Now;
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

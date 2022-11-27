@@ -1,13 +1,14 @@
 @model afaBalmes2.Models.User
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Registrar usuari";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Registre d'usuari</h1>
 
-<h4>User</h4>
+<p>Demani accés a la plataforma registrant un usuari nou amb aquest formulari.</p>
+<p>En els propers dies se li farà efectiu l'accés i rebrà un missatge a la seva bústia de correu. Si té qualsevol dubte o problema, contacti amb nosaltres.</p>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,23 +20,15 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Role" class="control-label"></label>
-                <select asp-for="Role" class="form-control"></select>
-                <span asp-validation-for="Role" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear usuari" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

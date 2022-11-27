@@ -23,9 +23,10 @@ public static class SeedData
                 new User
                 {
                     Email = "elviagn@gmail.com",
-                    Date = DateTime.Now,
-                    Role = UserRole.Read,
-                    Status = Status.Pending
+                    Password = Encrypt.GetMD5("admin"),
+                    Date = DateTime.UtcNow,
+                    Role = UserRole.Write,
+                    Status = Status.Active
                 }
             );
             context.SaveChanges();
